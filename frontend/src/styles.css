@@ -1,0 +1,54 @@
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+}
+
+.app { display: flex; height: 100vh; }
+.map { flex: 1; height: 100%; }
+
+.panel {
+  width: 340px;
+  flex-shrink: 0;
+  padding: 18px 20px;
+  overflow-y: auto;
+  border-left: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+h1 { font-size: 18px; margin: 0 0 2px; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: #64748b; margin: 22px 0 8px; }
+.sub { color: #64748b; font-size: 13px; margin: 0 0 12px; }
+.hint { color: #64748b; font-size: 13px; font-style: italic; }
+
+.totals { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+.big { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.big .num { font-size: 34px; font-weight: 700; color: #16a34a; line-height: 1; }
+.big .unit { color: #64748b; font-size: 13px; }
+.totals .row { display: flex; justify-content: space-between; font-size: 14px; padding: 2px 0; }
+
+table.breakdown { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.breakdown td { padding: 5px 0; border-bottom: 1px solid #f1f5f9; }
+table.breakdown td.r { text-align: right; }
+.muted { color: #94a3b8; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: middle; }
+
+.note { font-size: 12px; color: #475569; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 10px; }
+.src { font-size: 11px; color: #94a3b8; }
+
+.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.btns button {
+  flex: 1; min-width: 90px; padding: 8px; font-size: 13px; cursor: pointer;
+  border: 1px solid #cbd5e1; background: #fff; border-radius: 6px;
+}
+.btns button:hover:not(:disabled) { background: #f1f5f9; }
+.btns button.on { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+.btns button:disabled { opacity: .45; cursor: not-allowed; }
+
+.slider { margin: 10px 0; }
+.slider-top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 2px; }
+.slider input { width: 100%; }
+
+.status { font-size: 13px; color: #64748b; }
+.status.err { color: #dc2626; }
