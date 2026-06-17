@@ -1,0 +1,34 @@
+# Setback / buffer distances applied to each constraint before it's removed from a parcel.
+# Distances are in feet (converted to metres internally). These are defaults; the API
+# accepts per-request overrides so they can be changed from the UI without editing code.
+#
+# Sources are cited per layer. The brief weights reasoning and provenance over exact
+# figures, so each number below is defensible rather than the single "correct" value.
+
+working_crs: 5070   # NAD83 / Conus Albers (equal-area, metres) used for buffering & true area
+
+wetlands:
+  # 100 ft is the width most consistently cited as effective for water-quality and habitat
+  # protection in the buffer literature reviewed by USACE and several state programs.
+  # 50 ft is a defensible lower bound for degraded / low-value wetlands.
+  # USACE, "Wetland Buffers: Use and Effectiveness"; CWA Section 404 context.
+  buffer_ft: 100
+
+flood:
+  # FEMA Special Flood Hazard Area (1% annual chance, Zones A/AE). The zone itself is the
+  # constraint; no extra buffer is standard, so the polygon is removed as-is.
+  # FEMA National Flood Hazard Layer / NFIP.
+  buffer_ft: 0
+  zones: [A, AE, AH, AO, A99, V, VE]
+
+transmission:
+  # Right-of-way width scales with voltage. Values are half-widths from the line centreline,
+  # derived from utility ROW standards (e.g. AEP transmission facts) and NERC FAC-003 vegetation
+  # clearance practice. Unknown voltage falls back to `default_ft`.
+  default_ft: 75
+  by_voltage_kv:
+    - { min: 0,   half_width_ft: 50 }    # < 100 kV
+    - { min: 100, half_width_ft: 60 }    # 115-138 kV
+    - { min: 200, half_width_ft: 75 }    # 230 kV
+    - { min: 345, half_width_ft: 100 }   # 345 kV
+    - { min: 500, half_width_ft: 125 }   # 500 kV+
