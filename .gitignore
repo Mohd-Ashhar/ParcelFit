@@ -1,0 +1,44 @@
+# Project working context — not part of the submission
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+*.local
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Data (large geospatial downloads — keep out of git, document how to fetch)
+data/raw/
+data/cache/
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.zip
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
